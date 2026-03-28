@@ -1,0 +1,17 @@
+{
+  "name": "The Monarch",
+  "url": "https://www.themonarch.us",
+  "contact": {
+    "phone": "(405) 714-2002",
+    "email": "info@themonarch.us",
+    "address": "502 South Main Street\nStillwater"
+  },
+  "pagesScraped": [
+    "index",
+    "menu",
+    "services",
+    "about",
+    "contact"
+  ],
+  "totalImages": 11
+}
