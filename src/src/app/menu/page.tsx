@@ -2,30 +2,15 @@ import Image from "next/image";
 import ScrollReveal from "@/components/ScrollReveal";
 
 const heroImage =
-  "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1920&q=85";
+  "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1920&q=85";
 
-type MenuItem = {
-  name: string;
-  description: string;
-  price: string;
-  tags: string[];
-  priceSuffix?: string;
-  priceAlt?: string;
-  priceAltSuffix?: string;
-};
-
-type MenuSection = {
-  id: string;
-  title: string;
-  subtitle: string;
-  items: MenuItem[];
-};
-
-const menuSections: MenuSection[] = [
+const menuSections = [
   {
     id: "starters",
     title: "Starters",
     subtitle: "To Begin",
+    image:
+      "https://images.unsplash.com/photo-1541014741259-de529411b96a?w=1200&q=85",
     items: [
       {
         name: "Burrata on Toast",
@@ -61,6 +46,8 @@ const menuSections: MenuSection[] = [
     id: "soups-salads",
     title: "Soup & Salad",
     subtitle: "From the Bowl",
+    image:
+      "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=1200&q=85",
     items: [
       {
         name: "Mesclun",
@@ -88,9 +75,6 @@ const menuSections: MenuSection[] = [
         description:
           "Rich, creamy bisque featuring jumbo lump crab meat, perfectly seasoned with a touch of heat",
         price: "9",
-        priceSuffix: "cup",
-        priceAlt: "18",
-        priceAltSuffix: "bowl",
         tags: [],
       },
       {
@@ -98,17 +82,16 @@ const menuSections: MenuSection[] = [
         description:
           "Creamy loaded soup with chunks of potatoes, bacon, and cheese",
         price: "6",
-        priceSuffix: "cup",
-        priceAlt: "14",
-        priceAltSuffix: "bowl",
         tags: [],
       },
     ],
   },
   {
     id: "mains",
-    title: "Main Course",
+    title: "Mains",
     subtitle: "Principal Plates",
+    image:
+      "https://images.unsplash.com/photo-1558030006-450675393462?w=1200&q=85",
     items: [
       {
         name: "Filet Mignon",
@@ -163,8 +146,10 @@ const menuSections: MenuSection[] = [
   },
   {
     id: "desserts",
-    title: "Dessert",
+    title: "Desserts",
     subtitle: "Sweet Finishes",
+    image:
+      "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=1200&q=85",
     items: [
       {
         name: "Monarch Cheesecake",
@@ -191,259 +176,131 @@ const menuSections: MenuSection[] = [
   },
 ];
 
-const tagColors: Record<string, string> = {
-  Vegetarian:
-    "bg-green-100 text-green-800 border-green-200",
-  "Gluten Free":
-    "bg-amber-100 text-amber-800 border-amber-200",
-};
-
 export default function MenuPage() {
   return (
     <>
       {/* ── Hero ─────────────────────────────────────────── */}
-      <div
-        className="hidden md:block fixed inset-0 -z-10"
-        style={{
-          backgroundImage: `url(${heroImage})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-          backgroundAttachment: "fixed",
-        }}
-      />
-      <div
-        className="md:hidden fixed inset-0 -z-10"
-        style={{
-          backgroundImage: `url(${heroImage})`,
-          backgroundSize: "400% auto",
-          backgroundPosition: "center top",
-          backgroundRepeat: "no-repeat",
-        }}
-      />
-      <div className="fixed inset-0 bg-black/60 -z-5" />
+      <div className="hidden md:block fixed inset-0 -z-10" style={{backgroundImage:`url(${heroImage})`,backgroundSize:'cover',backgroundPosition:'center',backgroundRepeat:'no-repeat',backgroundAttachment:'fixed'}} />
+      <div className="md:hidden fixed inset-0 -z-10" style={{backgroundImage:`url(${heroImage})`,backgroundSize:'400% auto',backgroundPosition:'center top',backgroundRepeat:'no-repeat'}} />
+      <div className="fixed inset-0 bg-black/55 -z-5" />
 
-      {/* ── Header ─────────────────────────────────────── */}
-      <header className="relative z-10 flex items-center justify-between px-6 md:px-12 py-5 border-b border-[var(--gold)] border-opacity-20">
-        <a href="/" className="flex items-center gap-3">
-          <div className="text-[var(--gold)] text-xs tracking-[0.25em] uppercase">
+      <section className="relative h-[80vh] min-h-[500px] flex items-center justify-center overflow-hidden">
+        <div className="relative z-10 text-center px-6">
+          <p className="text-[var(--gold)] text-sm tracking-[0.3em] uppercase mb-3">
             The Monarch
-          </div>
-        </a>
-        <nav className="flex items-center gap-6 md:gap-10">
-          <a
-            href="/"
-            className="text-[var(--cream)] text-xs tracking-[0.2em] uppercase opacity-70 md:hover:opacity-100 transition-opacity"
-          >
-            Home
-          </a>
-          <a
-            href="/menu"
-            className="text-[var(--gold)] text-xs tracking-[0.2em] uppercase border-b border-[var(--gold)] pb-0.5"
-          >
-            Menu
-          </a>
-          <a
-            href="/about"
-            className="text-[var(--cream)] text-xs tracking-[0.2em] uppercase opacity-70 md:hover:opacity-100 transition-opacity"
-          >
-            About
-          </a>
-          <a
-            href="/contact"
-            className="text-[var(--cream)] text-xs tracking-[0.2em] uppercase opacity-70 md:hover:opacity-100 transition-opacity"
-          >
-            Contact
-          </a>
-        </nav>
-      </header>
-
-      {/* ── Menu Hero ───────────────────────────────────── */}
-      <section className="relative min-h-[50dvh] flex items-center justify-center px-6">
-        <div className="relative z-10 text-center">
-          <p
-            className="text-[var(--gold)] text-sm tracking-[0.3em] uppercase mb-4"
+          </p>
+          <h1
+            className="text-5xl md:text-7xl font-bold text-[var(--cream)] mb-4"
             style={{ fontFamily: "'Playfair Display', serif" }}
           >
             Our Menu
-          </p>
-          <h1
-            className="text-4xl md:text-6xl lg:text-7xl font-bold text-[var(--cream)] mb-4 tracking-tight"
-            style={{ fontFamily: "'Playfair Display', serif" }}
-          >
-            Dinner
           </h1>
           <p
-            className="text-[var(--cream)] opacity-60 text-sm italic max-w-md mx-auto"
+            className="text-[var(--cream)] opacity-70 italic text-base"
             style={{ fontFamily: "'Playfair Display', serif" }}
           >
-            Scratch cooking, local ingredients, classical French techniques — every plate, every evening.
+            Seasonal ingredients, classical techniques, unforgettable flavors
           </p>
-
-          {/* Print reference link */}
-          <div className="mt-8">
-            <a
-              href="/menu-dinner.jpg"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[var(--gold)] text-xs tracking-[0.2em] uppercase opacity-70 hover:opacity-100 transition-opacity underline underline-offset-4"
-            >
-              View Full Menu (Print)
-            </a>
-          </div>
         </div>
       </section>
 
       {/* ── Menu Sections ───────────────────────────────── */}
-      {menuSections.map((section) => (
-        <section
-          key={section.id}
-          id={section.id}
-          className="relative z-10 bg-[var(--charcoal)] py-16 md:py-20 px-6 md:px-8"
-        >
-          <div className="max-w-5xl mx-auto">
-            {/* Section Header */}
-            <ScrollReveal>
-              <div className="text-center mb-12 md:mb-16">
-                <div className="flex items-center justify-center gap-4 mb-3">
-                  <div className="h-px w-12 bg-[var(--gold)] opacity-40" />
-                  <p
-                    className="text-[var(--gold)] text-xs tracking-[0.3em] uppercase"
-                    style={{ fontFamily: "'Playfair Display', serif" }}
-                  >
-                    {section.subtitle}
-                  </p>
-                  <div className="h-px w-12 bg-[var(--gold)] opacity-40" />
-                </div>
-                <h2
-                  className="text-3xl md:text-4xl font-bold text-[var(--cream)]"
-                  style={{ fontFamily: "'Playfair Display', serif" }}
-                >
-                  {section.title}
-                </h2>
+      <div>
+        {menuSections.map((section, sectionIdx) => {
+          const isEven = sectionIdx % 2 === 0;
+          return (
+            <section
+              key={section.id}
+              id={section.id}
+              className="relative py-20 md:py-28"
+            >
+              {/* Full-bleed background image */}
+              <div className="absolute inset-0 z-0">
+                <Image
+                  src={section.image}
+                  alt={section.title}
+                  fill
+                  className="object-cover"
+                  sizes="100vw"
+                />
+                <div className="absolute inset-0 bg-[var(--charcoal)]/88" />
               </div>
-            </ScrollReveal>
 
-            {/* Items Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
-              {section.items.map((item, i) => (
-                <ScrollReveal key={item.name} delay={i * 0.05}>
-                  <div className="flex flex-col">
-                    <div className="flex items-start justify-between gap-4 mb-2">
-                      <h3
-                        className="text-lg md:text-xl text-[var(--cream)] font-semibold leading-tight"
+              {/* Content — reverses on even sections */}
+              <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-8">
+                <div className={`flex flex-col ${isEven ? "md:flex-row" : "md:flex-row-reverse"} gap-12 md:gap-16 items-start`}>
+
+                  {/* Section header — left side */}
+                  <div className="md:w-48 shrink-0">
+                    <ScrollReveal>
+                      <p className="text-[var(--gold)] text-sm tracking-[0.25em] uppercase mb-2">
+                        {section.subtitle}
+                      </p>
+                      <h2
+                        className="text-4xl md:text-5xl font-semibold text-[var(--cream)] mb-4"
                         style={{ fontFamily: "'Playfair Display', serif" }}
                       >
-                        {item.name}
-                      </h3>
-                      <span
-                        className="text-[var(--gold)] text-base md:text-lg font-medium shrink-0"
-                        style={{ fontFamily: "'Playfair Display', serif" }}
-                      >
-                        {item.priceAlt ? (
-                          <span>
-                            ${item.price}
-                            <span className="text-xs opacity-50 ml-1">
-                              {item.priceSuffix}
-                            </span>
-                            {" – "}
-                            ${item.priceAlt}
-                            <span className="text-xs opacity-50 ml-1">
-                              {item.priceAltSuffix}
-                            </span>
-                          </span>
-                        ) : (
-                          <>${item.price}</>
-                        )}
-                      </span>
-                    </div>
-                    <p className="text-[var(--cream)] opacity-50 text-sm leading-relaxed mb-3">
-                      {item.description}
-                    </p>
-                    {item.tags.length > 0 && (
-                      <div className="flex flex-wrap gap-2">
-                        {item.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className={`text-[10px] tracking-wide px-2 py-0.5 border rounded-full ${
-                              tagColors[tag] ??
-                              "bg-[var(--gold)] text-[var(--charcoal)] border-transparent"
-                            }`}
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    )}
+                        {section.title}
+                      </h2>
+                      <div className="h-px bg-[var(--gold)] w-12" />
+                    </ScrollReveal>
                   </div>
-                </ScrollReveal>
-              ))}
-            </div>
-          </div>
-        </section>
-      ))}
 
-      {/* ── Add-Ons & Notes ─────────────────────────────── */}
-      <section className="relative z-10 bg-[var(--charcoal)] py-12 px-6 md:px-8 border-t border-[var(--cream)] border-opacity-10">
-        <div className="max-w-5xl mx-auto text-center">
-          <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10 mb-6">
-            <div className="flex items-center gap-2">
-              <div className="w-4 h-4 border border-[var(--gold)] border-opacity-60 rounded-full flex items-center justify-center">
-                <div className="w-2 h-2 rounded-full bg-[var(--gold)] opacity-80" />
+                  {/* Menu items — right side */}
+                  <div className="flex-1 w-full">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-8">
+                      {section.items.map((item) => (
+                        <ScrollReveal key={item.name}>
+                          <div className="group">
+                            <div className="flex justify-between items-baseline gap-4 mb-2">
+                              <h3
+                                className="text-lg font-semibold text-[var(--cream)] group-hover:text-[var(--gold)] transition-colors"
+                                style={{ fontFamily: "'Playfair Display', serif" }}
+                              >
+                                {item.name}
+                              </h3>
+                              <span className="text-[var(--gold)] font-medium text-base shrink-0">
+                                ${item.price}
+                              </span>
+                            </div>
+                            <p className="text-sm leading-relaxed text-[var(--cream)] opacity-60">
+                              {item.description}
+                            </p>
+                            <div className="mt-3 h-px bg-[var(--gold)] opacity-20" />
+                          </div>
+                        </ScrollReveal>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               </div>
-              <span className="text-[var(--cream)] opacity-50 text-xs tracking-wider uppercase">
-                Gluten Free
-              </span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-4 h-4 border border-[var(--gold)] border-opacity-60 rounded-full flex items-center justify-center">
-                <span className="text-[var(--gold)] text-[8px] font-bold">V</span>
-              </div>
-              <span className="text-[var(--cream)] opacity-50 text-xs tracking-wider uppercase">
-                Vegetarian
-              </span>
-            </div>
-          </div>
+            </section>
+          );
+        })}
+      </div>
 
-          <div className="space-y-1 mb-6">
-            <p className="text-[var(--cream)] opacity-40 text-xs">
-              Add chicken +$7 · Add shrimp +$9
-            </p>
-            <p className="text-[var(--cream)] opacity-30 text-xs">
-              No substitutions please
-            </p>
-          </div>
-
-          <p className="text-[var(--cream)] opacity-25 text-[10px] max-w-lg mx-auto leading-relaxed">
-            *Some individuals may be at higher risk for foodborne illness if the following foods are consumed raw or uncooked: eggs, beef, fish, lamb, and milk.
+      {/* ── Footer CTA ──────────────────────────────────── */}
+      <section className="bg-[var(--charcoal)] py-16 px-6 md:px-8 text-center">
+        <div className="max-w-2xl mx-auto">
+          <h2
+            className="text-3xl md:text-4xl font-semibold text-[var(--cream)] mb-4"
+            style={{ fontFamily: "'Playfair Display', serif" }}
+          >
+            Ready to Dine?
+          </h2>
+          <p className="text-[var(--cream)] opacity-60 text-sm mb-8">
+            Reservations are recommended, especially on weekends.
           </p>
+          <a
+            href="https://tables.hostmeapp.com/restaurants/34277"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex px-8 py-3.5 bg-[var(--gold)] text-[var(--charcoal)] text-sm font-medium tracking-wider uppercase md:hover:bg-[var(--cream)] transition-colors duration-300"
+          >
+            Reserve Your Table
+          </a>
         </div>
       </section>
-
-      {/* ── Footer ─────────────────────────────────────── */}
-      <footer className="relative z-10 bg-[var(--charcoal)] py-10 px-6 md:px-8 border-t border-[var(--gold)] border-opacity-10">
-        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="text-center md:text-left">
-            <p
-              className="text-[var(--gold)] text-sm tracking-widest uppercase mb-1"
-              style={{ fontFamily: "'Playfair Display', serif" }}
-            >
-              The Monarch
-            </p>
-            <p className="text-[var(--cream)] opacity-40 text-xs">
-              502 S Main St · Stillwater, OK · (405) 714-2002
-            </p>
-          </div>
-          <div className="flex flex-col items-center md:items-end gap-1">
-            <p className="text-[var(--cream)] opacity-40 text-xs">
-              Wed–Thu 4pm–9pm · Fri–Sat 4pm–10pm
-            </p>
-            <p className="text-[var(--gold)] opacity-60 text-xs">
-              Happy Hour Daily 4–6pm
-            </p>
-          </div>
-        </div>
-      </footer>
     </>
   );
 }
